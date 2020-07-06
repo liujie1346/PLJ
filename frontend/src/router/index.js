@@ -1,15 +1,51 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Login from '@/components/Login'
+import Main from '@/components/Main'
+import Index from '@/components/Index'
 
-Vue.use(Router)
+
+import User from '@/components/User'
+import Role from '@/components/Role'
+import Permission from '@/components/Permission'
+
+Vue.use(Router);
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/Main',
+      name: 'Main',
+      component: Main
+    },
+    {
+      path: '/Index',
+      name: 'Index',
+      component: Index
+    },
+
+
+
+    {
+      path: '/User',
+      name: 'User',
+      component: User
+    },
+    {
+      path: '/Role',
+      name: 'Role',
+      component: Role
+    },
+    {
+      path: '/Permission',
+      name: 'Permission',
+      component: Permission
     }
+
   ]
 })

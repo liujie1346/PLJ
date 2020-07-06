@@ -4,7 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+// step1: 引入 ViewUI
+import ViewUI from 'view-design'
+// step2: 引入 css
+import 'view-design/dist/styles/iview.css';
+
 Vue.config.productionTip = false
+// step3:声明使用 ViewUI
+Vue.use(ViewUI);
 
 /* eslint-disable no-new */
 new Vue({
