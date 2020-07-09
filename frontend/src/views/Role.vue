@@ -26,9 +26,6 @@
       init() {
         //存储accessToken
         let accessToken = localStorage.getItem("accessToken")
-
-        console.log("accessToken=" + accessToken);
-
         let _this = this
         axios.get('http://localhost:8083/role/find', {
           // params: {

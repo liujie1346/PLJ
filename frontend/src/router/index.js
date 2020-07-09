@@ -1,13 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/components/Login'
-import Main from '@/components/Main'
-import Index from '@/components/Index'
-
-
-import User from '@/components/User'
-import Role from '@/components/Role'
-import Permission from '@/components/Permission'
+import Login from '@/views/Login'
+import Main from '@/views/Main'
+import User from '@/views/User'
+import Role from '@/views/Role'
+import Permission from '@/views/Permission'
 
 Vue.use(Router);
 
@@ -23,14 +20,6 @@ export default new Router({
       name: 'Main',
       component: Main
     },
-    {
-      path: '/Index',
-      name: 'Index',
-      component: Index
-    },
-
-
-
     {
       path: '/User',
       name: 'User',

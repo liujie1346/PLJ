@@ -9,9 +9,15 @@ import ViewUI from 'view-design'
 // step2: 引入 css
 import 'view-design/dist/styles/iview.css';
 
+import request from './../util/index.js'
+
+import has from './../util/btnPermission.js';
+
 Vue.config.productionTip = false
 // step3:声明使用 ViewUI
 Vue.use(ViewUI);
+Vue.use(request);
+Vue.use(has);
 
 /* eslint-disable no-new */
 new Vue({

@@ -23,12 +23,12 @@ public class SecurityUtil {
     /**
      * 获取当前登录用户信息
      * @return
-     * todo 后期优化
      */
     public User getLoginUser(){
         UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("user_name",user.getUsername());
+        //        todo 后期优化,不能每次都去数据库
         return userService.getOne(queryWrapper);
     }
 

@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.util.Result;
 import com.example.util.VCodeUtil;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,12 +17,16 @@ import static com.example.util.VCodeUtil.outputImage;
 public class ImageController {
 
     @GetMapping("/init")
-    public Map<String, Object> initCaptcha() {
+    public Result initCaptcha() {
+        Result result = new Result();
+        result.setCode("200");
+        result.setMsg("初始化成功");
+        result.setErr("初始化成功");
         String captchaId = UUID.randomUUID().toString().replace("-", "");
-        Map<String, Object> map = new HashMap<>();
-        map.put("captchaId", captchaId);
-        map.put("status", "200");
-        return map;
+        Map map = new HashMap();
+        map.put("captchaId",captchaId);
+        result.setData(map);
+        return result;
     }
 
     @GetMapping("/draw/{captchaId}")

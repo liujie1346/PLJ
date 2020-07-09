@@ -2,6 +2,7 @@ package com.example.controller;
 
 import com.example.bean.User;
 import com.example.serivce.UserService;
+import com.example.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,9 +21,13 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/find")
-    public List<User> find(){
+    public Result find(){
+        Result result = new Result();
         List<User> list = userService.list();
-        return list;
+        result.setCode("200");
+        result.setMsg("操作成功");
+        result.setData(list);
+        return result;
     }
 
     @GetMapping("/get")

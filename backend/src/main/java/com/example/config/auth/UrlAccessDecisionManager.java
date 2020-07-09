@@ -13,7 +13,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 
-//自定义UrlAccessDecisionManager实现AccessDecisionManager重写decide()方法 对访问url进行权限认证处理
+//自定义UrlAccessDecisionManager实现AccessDecisionManager重写decide()方法
+// *** 对访问url进行权限认证处理
 @Component
 public class UrlAccessDecisionManager implements AccessDecisionManager {
 
@@ -27,7 +28,7 @@ public class UrlAccessDecisionManager implements AccessDecisionManager {
     public void decide(Authentication authentication, Object o, Collection<ConfigAttribute> collection) throws AccessDeniedException, InsufficientAuthenticationException {
         // 遍历角色
         for (ConfigAttribute ca : collection) {
-            // ① 当前url请求需要的权限
+            // 1.当前url请求需要的权限
             String needRole = ca.getAttribute();
             if ("ROLE_LOGIN".equals(needRole)) {
                 if (authentication instanceof AnonymousAuthenticationToken) {
@@ -36,9 +37,10 @@ public class UrlAccessDecisionManager implements AccessDecisionManager {
                     throw new AccessDeniedException("未授权该url！");
                 }
             }
-            // ② 当前用户所具有的角色
+            // 2.当前用户所具有的角色
             Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
             Authentication a =  SecurityContextHolder.getContext().getAuthentication();
+            System.out.println(a + "authorities======="+authorities);
             for (GrantedAuthority authority : authorities) {
                 // 只要包含其中一个角色即可访问
                 if (authority.getAuthority().equals(needRole)) {

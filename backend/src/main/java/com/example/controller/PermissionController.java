@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.bean.Permission;
 import com.example.serivce.PermissionService;
+import com.example.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,8 @@ public class PermissionController {
     PermissionService permissionService;
 
     @GetMapping("/find")
-    public JSONArray find() {
+    public Result find() {
+        Result result = new Result();
         List<Permission> list = permissionService.list();
         JSONArray arr = new JSONArray();
         for (Permission permission : list) {
@@ -52,7 +54,10 @@ public class PermissionController {
                 arr.add(obj);
             }
         }
-        return arr;
+        result.setCode("200");
+        result.setMsg("操作成功");
+        result.setData(arr);
+        return result;
     }
 
     @GetMapping("/get")
